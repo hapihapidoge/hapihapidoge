@@ -5,12 +5,6 @@ branches:
   only:
   - hexo
 before_install:
-- openssl aes-256-cbc -K $encrypted_f217180e22ee_key -iv $encrypted_f217180e22ee_iv
-  -in .travis/id_rsa_travis.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa
-- cp .travis/ssh_config ~/.ssh/config
 - git config --global user.name "klis"
 - git config --global user.email "qiang.liao@outlook.com"
 install:
@@ -18,3 +12,10 @@ install:
 - npm install
 script:
 - npm run deploy
+after_success:
+- cd ./public
+- git init
+- git add --all .
+- git commit -m "Travis CI Auto Builder"
+# 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
+- git push --quiet --force https://$REPO_TOKEN@github.com/hapihapidoge/hapihapidoge.github.io.git master
