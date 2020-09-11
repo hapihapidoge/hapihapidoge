@@ -11,7 +11,8 @@ install:
 - npm install hexo-cli -g
 - npm install
 script:
-- npm run deploy
+- hexo clean
+- hexo generate
 after_success:
 - cd ./public
 - git init
