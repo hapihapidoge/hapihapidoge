@@ -5,8 +5,6 @@ branches:
   only:
   - hexo
 before_install:
-- git config --global user.name "klis"
-- git config --global user.email "qiang.liao@outlook.com"
 install:
 - npm install hexo-cli -g
 - npm install
@@ -16,7 +14,9 @@ script:
 after_success:
 - cd ./public
 - git init
+- git config  user.name "klis"
+- git config  user.email "qiang.liao@outlook.com"
 - git add --all .
 - git commit -m "Travis CI Auto Builder"
 # 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
-- git push --quiet --force https://$REPO_TOKEN@github.com/hapihapidoge/hapihapidoge.github.io.git master
+- git push --quiet --force "https://$REPO_TOKEN@github.com/hapihapidoge/hapihapidoge.github.io.git" master:master
