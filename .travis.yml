@@ -9,8 +9,7 @@ install:
 - npm install hexo-cli -g
 - npm install
 script:
-- hexo clean
-- hexo generate
+- npm run deploy
 after_success:
 - cd ./public
 - git init
