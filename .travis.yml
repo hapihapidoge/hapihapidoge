@@ -12,6 +12,7 @@ script:
 - npm run deploy
 after_success:
 - cd ./public
+- echo "www.funguykawayi.cn" >> CNAME
 - git init
 - git config  user.name "klis"
 - git config  user.email "qiang.liao@outlook.com"
