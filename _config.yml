@@ -106,3 +106,4 @@ deploy:
   type: git
   repo: https://github.com/hapihapidoge/hapihapidoge.github.io.git
 branch: master
+
